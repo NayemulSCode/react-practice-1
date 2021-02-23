@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Welcome from './Welcome'
 function App() {
@@ -38,6 +38,7 @@ function App() {
      <br />
      <Welcome  />
      <Increment />
+     <Users />
     </div>
   );
 }
@@ -70,6 +71,40 @@ function Increment(){
       <h1>Count:{count}</h1>
       <button onClick={ () => setCount(count + 1)}>Increase</button>
       <button onClick={ () => setCount(count - 1)}>Decrease</button>
+    </div>
+  )
+}
+//useEffect data load from api
+function Users(){
+  const userStyle = {
+    border:'2px solid black',
+    borderRadius:'10px',
+    boxShadow:'0px 5px 8px',
+    padding:'10px',
+    width:'400px',
+    float:'left',
+    margin:'30px'
+  }
+  const [users, setUsers] = useState([]);
+
+  useEffect(() =>{
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then(data => setUsers(data))
+  },[])
+  
+  return(
+    <div>
+      <h3>Total User: {users.length}</h3>
+      {
+        <div >
+          {users.map(user =><div style={userStyle}>
+              <h3>Name: {user.name}</h3> 
+              <p><span style={{fontWeight:'bold'}}>Email: </span>{user.email}</p>
+            </div>
+          )}
+        </div>
+      }
     </div>
   )
 }
