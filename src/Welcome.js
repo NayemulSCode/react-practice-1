@@ -1,26 +1,36 @@
 import React from 'react'
 
 function Welcome(props) {
-    const Person = [
+    const person = [
         {
             name: 'Nayemul', 
-            ob:'dev'
+            job:'dev'
         },
         {
             name:'Mona',
             job:'Student'
         },
+        {
+            name:'Khusbo',
+            job:'Student'
+        },
+        
     ]
     const styleComponent = {
         border: "1px solid black",
         margin: "10px"
     }
+    const personName = {
+        
+    }
     return (
         <div style={styleComponent}>
-            <h1>Hello,{props.name}</h1>
-            {/* <p>Job: {person.job}</p> */}
+            <ul>
+                {
+                    person.map(pname => <li>{pname.name} {pname.job}</li>)  
+                }
+            </ul>
         </div>
     )
 }
-
 export default Welcome
