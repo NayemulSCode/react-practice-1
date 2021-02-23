@@ -22,9 +22,9 @@ function App() {
 
   return (
     <div className="App">
-    <Person name={persons[0].name} job={persons[0].job} salary={persons[0].salary} />
-    <Person name={persons[1].name} job={persons[1].job} salary={persons[1].salary} />
-    <Person name={persons[2].name} job={persons[2].job} salary={persons[2].salary} />
+    <Person person={persons[0]} />
+    <Person person={persons[1]} />
+    <Person person={persons[2]} />
      <br />
      <br />
      <br />
@@ -52,11 +52,12 @@ function Person(props){
     margin:'5px',
     float:'left'
   }
+   const {name,job,salary} = props.person;
   return(
     <div style={personsStyle}>
-      <h1>{props.name}</h1>
-      <h3>{props.job}</h3>
-      <p>{props.salary}</p>
+      <h1>{name}</h1>
+      <h3>{job}</h3>
+      <p>{salary}</p>
 
     </div>
   )
